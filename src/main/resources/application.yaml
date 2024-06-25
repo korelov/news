@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/news
+    username: postgres
+    password: 3012413
+    driverClassName: org.postgresql.Driver
+  main:
+    allow-circular-references: true
+server:
+  port: 8083
