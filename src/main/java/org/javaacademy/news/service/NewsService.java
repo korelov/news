@@ -44,7 +44,7 @@ public class NewsService {
     @Transactional
     public void createNews(CreateNewsDtoRq newsDtoRq) {
         News news = newsMapper.convertToEntity(newsDtoRq);
-        Category category = categoryRepository.findByName(news.getCategory().getName());
+        Category category = categoryRepository.findByName(news.getCategory().getName()).orElse(null);
         if (category == null) {
             category = news.getCategory();
             categoryRepository.save(category);
@@ -60,7 +60,7 @@ public class NewsService {
     }
 
     public List<NewsDtoRs> getNewsByDateAndCategory(String date, String categoryName) {
-        Category category = categoryRepository.findByName(categoryName);
+        Category category = categoryRepository.findByName(categoryName).orElse(null);
         if (category == null) {
             return new ArrayList<>();
         }
